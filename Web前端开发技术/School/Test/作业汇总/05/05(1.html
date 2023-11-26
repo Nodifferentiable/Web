@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<style type="text/css">
+		input,
+		p,
+		a {
+			font-size: 20px;
+		}
+	</style>
+	<script type="text/javascript">
+		function solve(a, b, c) {
+			root = {}
+			let x1 = x2 = 0;
+			let det = 1 * b * b - 4 * a * c;
+			if (det < 0) x1 = x2 = "null";
+			else {
+				let sd = Math.sqrt(det);
+				x1 = (0 - b + sd) / (2 * a);
+				x2 = (0 - b - sd) / (2 * a);
+			}
+			root.firstRoot = x1;
+			root.secRoot = x2;
+			return root;
+		}
+	</script>
+</head>
+<body>
+	<p style="font-size: 25px;">求解一元二次方程</p>
+	<script type="text/javascript">function cal() {
+			a = document.getElementById("a1").value;
+			b = document.getElementById("b1").value;
+			c = document.getElementById("c1").value;
+			document.getElementById('p1').innerHTML = "x1 = " + solve(a, b, c).firstRoot + ",  x2 = " + solve(a, b, c).secRoot;
+		}
+	</script>
+	<input type="text" id="a1" style="width: 100px;height: 40px;font-size: 20px;"><a>x^2&nbsp+&nbsp</a></input>
+	<input type="text" id="b1" style="width: 100px;height: 40px;font-size: 20px;"><a>x&nbsp+&nbsp</a></input>
+	<input type="text" id="c1" style="width: 100px;height: 40px;font-size: 20px;"></input>
+	<button type="button" onclick="cal ()" style="width: 80px;height: 42px;font-size: 20px;">计&nbsp算</button>
+	<br>
+	<p id="p1"></p>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>注册页面</title>
+	<style>
+		h1 {
+			text-align: center;
+			margin-bottom: 50px;
+		}
+		table {
+			text-align: center;
+			font-size: 20px;
+			padding: 10px 10px;
+			width: 500px;
+			height: 400px;
+			border-collapse: separate;
+			border-spacing: 6pt;
+		}
+		input,
+		select {
+			font-size: 20px;
+			border: 2px solid red;
+			border-radius: 0.5em;
+		}
+		.reg {
+			text-align: center;
+			margin: 0 auto;
+			border: 5px solid;
+			border-radius: 2em;
+			padding: 10px 20px;
+			width: 500px;
+			height: 500px;
+		}
+	</style>
+</head>
+<body>
+	<h1>注册</h1>
+	<div class="reg">
+		<form>
+			<table id="table1">
+				<tr>
+					<td>用户名:</td>
+					<td><input type="text" name="username"></td>
+				</tr>
+				<tr>
+					<td>密码:</td>
+					<td><input type="password" name="password"></td>
+				</tr>
+				<tr>
+					<td>确认密码:</td>
+					<td><input type="password" name="confirm_password"></td>
+				</tr>
+				<tr>
+					<td>性别:</td>
+					<td>
+						<label><input type="radio" name="gender" value="male">男</label>
+						<label><input type="radio" name="gender" value="female">女</label>
+					</td>
+				</tr>
+				<tr>
+					<td>兴趣爱好:</td>
+					<td>
+						<label>体育<input type="checkbox" name="hobby" value="sports"></label>
+						<label>音乐<input type="checkbox" name="hobby" value="music"></label>
+						<label>军事<input type="checkbox" name="hobby" value="mil"></label>
+					</td>
+				</tr>
+				<tr>
+					<td>联系方式</td>
+					<td><input type="contact" name="contact"></td>
+				</tr>
+			</table>
+			<label for="identity"></label>
+			<select id="identity" name="identity">
+				<option value="" selected>请选择所在省份</option>
+				<option value="beijing">北京</option>
+				<option value="shanghai">上海</option>
+				<option value="guangzhou">广州</option>
+				<option value="shenzhen">深圳</option>
+				<option value="ningbo">宁波</option>
+				<option value="hangzhou">杭州</option>
+			</select>
+			<br/><br/>
+			<input type="reset" value="重置">
+			<input type="submit" value="提交">
+		</form>
+	</div>
+</body>
+</html>

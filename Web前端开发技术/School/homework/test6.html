@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<head>
+    <script type="text/javascript">
+        function log()
+        {
+            if(document.getElementById("user").value=="1"&&document.getElementById("key").value=="1")
+            {
+                window.location.href = "table.html";
+            }
+            else
+            {
+                document.getElementById("p1").innerHTML = "密码或账号错误";
+            }
+        }
+        window.onload = function()
+        {
+            document.getElementById("login").onclick = log;
+        }
+    </script>
+</head>
+<body>
+    <div style="display:flex;position:absolute;top:30px;left:550px;flex-direction: column;">
+        <div>
+            账号:<input type="text"id="user">
+        </div>
+        <div>
+            密码:<input type="text"id="key">
+        </div>
+        <div>
+            <button id="login"style="width:210px;">登陆</button>
+            <span id="p1"></span>
+        </div>
+    </div>
+</body>

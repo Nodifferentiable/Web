@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业8</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        body {
+            background-color: skyblue;
+        }
+
+        .header {
+            background-color: #1965b3;
+        }
+
+        .top {
+            height: 40px;
+        }
+
+        .top-left {
+            float: left;
+            margin-left: 120px;
+            margin-top: 10px;
+        }
+
+        .top-left a {
+            color: #fff;
+            font-size: 14px;
+            margin-right: 30px;
+            text-decoration: none;
+            border-left: 2px solid #fff;
+            padding-left: 7px;
+        }
+
+        .top-right {
+            float: right;
+            margin-right: 120px;
+            margin-top: 10px;
+        }
+
+        .top-right a {
+            color: #fff;
+            font-size: 14px;
+            margin-left: 30px;
+        }
+
+        .logo {
+            position: relative;
+            height: 110px;
+            background: url(https://www.nbt.edu.cn/images/headerbg.png) no-repeat center;
+        }
+
+        .logo img {
+            position: absolute;
+            top: 20px;
+            left: 100px;
+        }
+
+        .nav-bar {
+            float: left;
+            width: 18%;
+            height: 500px;
+            background-color: azure;
+            margin: 10px 10px 0 10px;
+            border-radius: 15px 15px 0 0;
+            border: 3px solid deepskyblue;
+        }
+
+        .catalog {
+            height: 120px;
+            background-color: lightgray;
+            text-align: center;
+            font-size: 20px;
+            line-height: 120px;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .nav {
+            border: 1px solid black;
+            margin-top: 5px;
+            height: 374px;
+        }
+
+        .navlist {
+            margin: 20px;
+            text-align: center;
+        }
+
+        .nav button {
+            width: 130px;
+            height: 50px;
+            margin-bottom: 2px;
+            font-size: 15px;
+            border-radius: 10px 0 0 10px;
+            background-image: linear-gradient(to bottom, #fff, lightgray);
+            border-color: white;
+            cursor: pointer;
+        }
+
+        .book {
+            float: left;
+            width: 79%;
+            height: 500px;
+            background-color: #f8f8ff;
+            margin-top: 10px;
+            border-radius: 15px 15px 0 0;
+            border: 3px solid deepskyblue;
+        }
+
+        .search {
+            height: 120px;
+            background-color: lightgray;
+            font-size: 20px;
+            line-height: 120px;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .search button {
+            font-size: 16px;
+            padding: 2px 8px;
+        }
+
+        table {
+            width: 600px;
+            background-color: #DCDCDC;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        th {
+            background-color: #00CED1;
+            font-size: 20px;
+        }
+
+        td {
+            border-bottom: 1px solid #000;
+            height: 30px;
+        }
+
+        th:first-child {
+            width: 50%;
+        }
+
+        th:last-child {
+            width: 20%;
+        }
+
+        #addform {
+            display: none;
+            position: fixed;
+            top: 100px;
+            left: 300px;
+            width: 300px;
+            height: 300px;
+            background-color: lightcyan;
+            text-align: center;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="top">
+            <div class="top-left">
+                <a href="#">校友</a>
+                <a href="#">教师</a>
+                <a href="#">学生</a>
+                <a href="#">招聘</a>
+            </div>
+            <div class="top-right">
+                <a href="#">注册</a>
+                <a href="#">登录</a>
+            </div>
+        </div>
+
+        <div class="logo">
+            <img src="https://www.nbt.edu.cn/images/lg-vdf0.png">
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="nav-bar">
+            <div class="catalog">
+                <span>图书目录</span>
+            </div>
+            <div class="nav">
+                <ul class="navlist">
+                    <li><button>全部</button></li>
+                    <li><button category="计算机">计算机</button></li>
+                    <li><button category="文学">文学</button></li>
+                    <li><button category="数学">数学</button></li>
+                    <li><button category="政治">政治</button></li>
+                </ul>
+            </div>
+        </div>
+        <div class="book">
+            <div class="search">
+                <span style="margin: 2px;">输入书名</span>
+                <input id="searchbox" type="text" style="width: 200px; height: 22px;" onkeyup="searchBooks()">
+                <button onclick="searchBooks()">书名查找</button>
+                <button style="margin-left: 20%;" onclick="addBook()">新书录入</button>
+            </div>
+            <div class="book-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>书名</th>
+                            <th onclick="sortByPrice(this)">价格</th>
+                            <th>数量</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- <tr>
+                            <td>程序设计</td>
+                            <td>30</td>
+                            <td>30</td>
+                            <td>编辑 删除</td>
+                        </tr>
+                        <tr>
+                            <td>程序设计</td>
+                            <td>30</td>
+                            <td>30</td>
+                            <td>编辑 删除</td>
+                        </tr> -->
+                    </tbody>
+                </table>
+
+                <div class="pagination" style="text-align: center;">
+                    第<input type="text" style="width: 20px;" id="gotoPage">页 <button onclick="gotoPage()">go</button>
+                    共<span id="allPageNum"></span>页
+                    <button onclick="nextPage()" style="margin-left: 100px;">下一页</button>
+                    <button onclick="lastPage()" style="margin-right: 100px;">上一页</button>
+                    每面显示<input type="text" style="width: 20px;" id="setBook">条记录
+                    <button onclick="setPageNum()">设定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <form id="addform">
+        <h2>新书录入</h2>
+        <h4>书名</h4>
+        <input type="text" id="bookname" name="bookname">
+        <h4>类别</h4>
+        <select name="city" class="city">
+            <option value="计算机">计算机</option>
+            <option value="文学">文学</option>
+            <option value="数学">数学</option>
+            <option value="政治">政治</option>
+        </select>
+        <h4>价格</h4>
+        <input type="number" id="price">
+        <h4>数量</h4>
+        <input type="number" id="copies">
+        <br><br>
+        <input type="button" value="插入书籍">
+        <input type="button" value="取消">
+    </form>
+
+
+
+    <script>
+        // 是否在浏览器存数据
+        const isLocalStorage = false
+        const data = isLocalStorage ? JSON.parse(localStorage.getItem('data')) : [
+            {
+                bookId: 1,
+                bookname: "C语言程序设计",
+                category: "计算机",
+                price: 30,
+                num: 30
+            },
+            {
+                bookId: 2,
+                bookname: "Java程序设计",
+                category: "计算机",
+                price: 50,
+                num: 50
+            },
+            {
+                bookId: 3,
+                bookname: "西游记",
+                category: "文学",
+                price: 20,
+                num: 20
+            },
+            {
+                bookId: 4,
+                bookname: "红楼梦",
+                category: "文学",
+                price: 25,
+                num: 25
+            },
+            {
+                bookId: 5,
+                bookname: "高等数学",
+                category: "数学",
+                price: 30,
+                num: 80
+            },
+            {
+                bookId: 6,
+                bookname: "线性代数",
+                category: "数学",
+                price: 45,
+                num: 120
+            },
+            {
+                bookId: 7,
+                bookname: "马克思主义",
+                category: "政治",
+                price: 25,
+                num: 150
+            },
+            {
+                bookId: 8,
+                bookname: "中国近代史",
+                category: "政治",
+                price: 35,
+                num: 200
+            }
+        ]
+        if (!isLocalStorage) localStorage.setItem('data', JSON.stringify(data))
+
+        // maxId表示当前书本的最大bookId，防止插入的书本bookId发生重复
+        let maxId = data[data.length - 1].bookId
+        // flag表示当前页面显示的类别，flag=0表示全部，flag=1表示计算机，以此类推
+        let flag = 0
+        // 获取左侧所有按钮
+        const btns = document.querySelectorAll('.navlist li button')
+        // 获取表格tbody
+        const tbody = document.querySelector('tbody')
+        // 默认每页显示书本数量
+        let userSetNum = 2
+        // 页面从数组下标start开始显示
+        let start = 0
+        // 设置总页数
+        const allPageNum = document.querySelector('#allPageNum')
+        allPageNum.innerHTML = Math.ceil(filterByCategory(flag).length / userSetNum)
+
+        // 将更新后的数据存储
+        function updateStorage() {
+            isLocalStorage && localStorage.setItem('data', JSON.stringify(data))
+        }
+
+        // 书名合法性检查
+        function checkBookName(bookname) {
+            return !!bookname
+        }
+
+        // 价格合法性检查
+        function checkPrice(price) {
+            return /^((([1-9]\d*)|0)(\.\d{1,2})?)$/.test(price)
+        }
+
+        // 数量合法性检查
+        function checkNum(num) {
+            return /^[1-9][0-9]*$/.test(num)
+        }
+
+        // i=0表示全部书籍，i=1表示计算机书籍，依次类推
+        function filterByCategory(i) {
+            return i ? data.filter(book => book.category === btns[i].getAttribute('category')) : data
+        }
+
+        // 渲染要在页面显示的数据
+        function render(books) {
+            tbody.innerHTML = ''
+            for (let i = 0; i < books.length; i++)
+                tbody.innerHTML += `<tr>
+                    <td>${books[i].bookname}</td>
+                    <td>${books[i].price}</td>
+                    <td>${books[i].num}</td>
+                    <td><button class="edit" onclick="editBook(${books[i].bookId})">编辑</button> 
+                        <button class="delete" onclick="deleteBook(${books[i].bookId})">删除</button></td>
+                    </tr>`
+        }
+
+        //1. 刚打开页面，应该显示所有书籍
+        render(data.slice(start, start + userSetNum))
+
+        //2. 绑定左侧按钮显示对应书籍事件
+        for (let i = 0; i < btns.length; i++) {
+            btns[i].onclick = function () {
+                render(filterByCategory(flag = i))
+                // 分页代码
+                start = 0
+                // 显示从下标[0]到下标[userSetNum]
+                render(filterByCategory(flag).slice(start, start + userSetNum))
+                // 设置总页数
+                allPageNum.innerHTML = Math.ceil(filterByCategory(flag).length / userSetNum)
+            }
+        }
+
+        //3. 新书录入
+        function addBook() {
+            // 获取隐藏的书籍输入表单
+            const addform = document.querySelector('#addform')
+            // 显示隐藏的表单
+            addform.style.display = 'block'
+            // inputs包含了书名，价格和数量三个文本框以及输入书籍和取消两个按钮
+            const inputs = addform.querySelectorAll('input')
+            // category为类别下拉框
+            const category = addform.querySelector('select')
+            // 默认显示计算机
+            category.value = category.children[flag ? flag - 1 : flag].value
+            // 对书籍插入按钮绑定点击事件。注意如果用addEventListener的话要在最后需要用removeEventListener解绑事件
+            inputs[3].onclick = function () {
+                const newBook = {}
+                // 书名合法性检查
+                const bookName = inputs[0].value.trim()
+                checkBookName(bookName) ? newBook.bookname = bookName : alert('输入不能为空')
+                if (!checkBookName(bookName)) return
+
+                // 价格合法性检查
+                const price = inputs[1].value
+                checkPrice(price) ? newBook.price = +price : alert('价格输入不合法')
+                if (!checkPrice(price)) return
+
+                // 数量合法性检查
+                const num = inputs[2].value
+                checkNum(num) ? newBook.num = +num : alert('数量输入不合法')
+                if (!checkNum(num)) return
+
+                newBook.category = category.value
+                newBook.bookId = ++maxId
+                // 将新书插入到data数组当中
+                data.push(newBook)
+                // 将更新后的数据存储
+                updateStorage()
+                // 隐藏输出表单
+                addform.style.display = 'none'
+                // 将输入表单清空，方便下次输入
+                addform.reset()
+                // 渲染表格
+                // render(filterByCategory(flag))
+                // 从start开始显示，显示userSetNum行
+                render(filterByCategory(flag).slice(start, start + userSetNum))
+                // 重新计算总页数
+                allPageNum.innerHTML = Math.ceil(filterByCategory(flag).length / userSetNum)
+            }
+
+            // 如果不想输入可以取消
+            inputs[4].onclick = function () {
+                addform.style.display = 'none'
+                addform.reset()
+            }
+
+            // 可以拖动这个表单
+            addform.onmousedown = function (e) {
+                const x = e.clientX - addform.offsetLeft
+                const y = e.clientY - addform.offsetTop
+                addform.onmousemove = move
+                function move(e) {
+                    // 如果鼠标在文本框里则不能拖动
+                    if (e.target.tagName === 'INPUT') {
+                        addform.onmousemove = null
+                    }
+                    addform.style.left = e.clientX - x + 'px'
+                    addform.style.top = e.clientY - y + 'px'
+                }
+                addform.onmouseup = function () {
+                    addform.onmousemove = null
+                }
+            }
+        }
+
+        //4. 删除书籍，采用事件委托
+        function deleteBook(id) {
+            tbody.onclick = function (e) {
+                if (e.target.className === 'delete') {
+                    data.splice(data.findIndex(book => book.bookId === id), 1)
+                    updateStorage()
+                    // 显示从start开始的userSetNum行，并重新计算总页数
+                    render(filterByCategory(flag).slice(start, start + userSetNum))
+                    allPageNum.innerHTML = Math.ceil(filterByCategory(flag).length / userSetNum)
+                }
+            }
+        }
+
+        //5. 修改书籍，采用事件委托
+        function editBook(id) {
+            tbody.onclick = function (e) {
+                if (e.target.className === 'edit') {
+                    // 找到当前bookId的书是数组的第几个元素，也就是表格中的第几行
+                    const line = filterByCategory(flag).slice(start, start + userSetNum).findIndex(book => book.bookId === id)
+                    // 找到当前bookId的书是data数组的第几个元素
+                    const index = data.findIndex(book => book.bookId === id)
+                    // 把那一行改成可编辑，按钮“编辑”变成“完成”，完成按钮绑定点击事件执行complete函数
+                    // 可能存在多行同时修改，完成按钮是修改对应行，因此文本框需要绑定index
+                    tbody.children[line].innerHTML = `<tr>
+                        <td><input type="text" style="width:200px" class="editbookname${index}" value="${data[index].bookname}"></td>
+                        <td><input type="number" style="width:60px" class="editprice${index}" value="${data[index].price}"></td>
+                        <td><input type="number" style="width:60px" class="editnum${index}" value="${data[index].num}"></td>
+                        <td><button class="complete" onclick="complete(${index},${line})">完成</button> 
+                        <button class="delete" onclick="deleteBook(${data[index].bookId})">删除</button></td>
+                        </tr>`
+                }
+            }
+        }
+
+        // 在修改书籍时，当点击完成后的操作
+        function complete(index, line) {
+            const bookName = document.querySelector(`.editbookname${index}`).value.trim()
+            checkBookName(bookName) ? data[index].bookname = bookName : alert('输入不能为空')
+            if (!checkBookName(bookName)) return
+
+            const price = document.querySelector(`.editprice${index}`).value
+            checkPrice(price) ? data[index].price = +price : alert('价格输入不合法')
+            if (!checkPrice(price)) return
+
+            const num = document.querySelector(`.editnum${index}`).value
+            checkNum(num) ? data[index].num = +num : alert('数量输入不合法')
+            if (!checkNum(num)) return
+
+            tbody.children[line].innerHTML = `<tr>
+                            <td>${data[index].bookname}</td>
+                            <td>${data[index].price}</td>
+                            <td>${data[index].num}</td>
+                            <td><button class="edit" onclick="editBook(${data[index].bookId})">编辑</button> 
+                                <button class="delete" onclick="deleteBook(${data[index].bookId})">删除</button></td>
+                            </tr>`
+            updateStorage()
+        }
+
+        //6. 查找书籍
+        function searchBooks() {
+            render(filterByCategory(flag).filter(book => book.bookname.indexOf(document.querySelector("#searchbox").value) !== -1))
+        }
+
+        //7. 按价格排序
+        function sortByPrice(obj) {
+            obj.classList.toggle('asc') ? data.sort((a, b) => a.price - b.price) : data.sort((a, b) => b.price - a.price)
+            render(filterByCategory(flag).slice(start, start + userSetNum))
+        }
+
+        //按数量排序，略
+        Pages = document.getElementById('gotoPage')
+        //8. 分页
+        function gotoPage() {
+            // 你的代码
+
+            // 1. 获取用户输入要跳转的页数
+            page = Pages.value;
+            console.log(page)
+            // 2. 检查用户输入的必须是正整数（/^[1-9]\d*$/）且数字不超过总页数，若不合法弹窗
+            const reg = /^[1-9]\d*$/;
+            if (!reg.test(page) || page < 1 || page > +allPageNum.textContent) {
+                alert('输入的页码不合法,请重新输入');
+                Pages.value = '';
+                return;
+            }
+            // 3. 设置start
+            start = (page - 1) * userSetNum;
+            // 4. render()调用
+            render(filterByCategory(flag).slice(start, start + userSetNum))
+        }
+
+        function nextPage() {
+            // 你的代码
+            // 1. 设置start
+            page = Pages.value === '' ? 1 : Pages.value
+            start += userSetNum;
+            page++;
+            // 2. 注意start可能超过数组长度
+            if (start >= data.length) {
+                start = 0;
+                page = 1;
+            }
+            // 3. render()调用
+            render(filterByCategory(flag).slice(start, start + userSetNum))
+            Pages.value = page;
+        }
+
+        function lastPage() {
+            // 你的代码
+            // 1. 设置start
+            start = start - userSetNum;
+            page = Pages.value === '' ? 1 : Pages.value
+            page--;
+            // 2. 注意start可能小于0
+            if (start < 0) {
+                page = Math.ceil(filterByCategory(flag).length / userSetNum);
+                start = (page - 1) * userSetNum;
+
+            }
+            // 3. render()调用
+            render(filterByCategory(flag).slice(start, start + userSetNum))
+            Pages.value = page;
+        }
+
+        function setPageNum() {
+            // 你的代码
+            // 1. 获取用户输入要设置的页数
+            const setBook = document.getElementById('setBook');
+            getId = setBook.value === '' ? userSetNum : +setBook.value
+            // 2. 检查用户输入的必须是正整数（/^[1-9]\d*$/），若不合法弹窗
+            const reg = /^[1-9]\d*$/;
+            if (!reg.test(getId)) {
+                alert('输入的页码不合法,请重新输入');
+                setBook.value = '';
+                return;
+            }
+            // 3. 设置userSetNum
+            userSetNum = getId;
+            // 4. 设置start(设置为0比较合理)
+            start = 0;
+            Pages.value = 1;
+            // 5. render()调用
+            render(filterByCategory(flag).slice(start, start + userSetNum))
+            // 6. 总页数可能发生改变，重新计算
+            allPageNum.innerHTML = Math.ceil(filterByCategory(flag).length / userSetNum)
+        }
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>
