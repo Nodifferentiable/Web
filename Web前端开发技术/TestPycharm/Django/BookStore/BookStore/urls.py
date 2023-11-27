@@ -17,5 +17,6 @@ from django.contrib import admin
 from django.urls import path
 
 urlpatterns = [
+    #后台管理的路由
     path('admin/', admin.site.urls),
 ]
