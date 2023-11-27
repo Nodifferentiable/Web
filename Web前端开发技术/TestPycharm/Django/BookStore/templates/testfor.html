@@ -5,13 +5,11 @@
     <title>Title</title>
 </head>
 <body>
-<p style="font-size:50px;color:green">
-    {{name}}<br/>
-    {{age}}<br/>
-    {{gender}} <br/>
+
+{% for item in dic %}
+<li>{{item}}</li>
+{% endfor %}
 
 
-
-</p>
 </body>
 </html>

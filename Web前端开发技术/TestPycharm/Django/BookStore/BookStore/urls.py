@@ -24,5 +24,6 @@ urlpatterns = [
 
     #include映射子路由
     path('index/', include("index.urls")),
+    path('index/',include("index.urls")),
 
 ]
