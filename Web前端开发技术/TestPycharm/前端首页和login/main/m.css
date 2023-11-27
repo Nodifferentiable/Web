@@ -1,0 +1,192 @@
+/*头部*/
+.head{
+    /*width: 100%;*/
+    height: 110px;
+    background-color: whitesmoke;
+    min-width: 1500px;
+}
+.head_center{
+    width: 1500px;
+    height: 100%;
+    /*background-color: blue;*/
+    /*margin-left: 200px;*/
+    margin: 0 auto;
+}
+.title{
+    height: 110px;
+    width: 350px;
+    /*background-color: pink;*/
+    font-size: 30px;
+    text-align: center;
+    line-height: 110px;
+    color: #02B2B5;
+    float: left;
+}
+.menu{
+    width: 700px;
+    height: 110px;
+    float: left;
+    margin-left: 150px;
+    /*line-height: 110px;*/
+    /*background-color: #a6c1ee;*/
+}
+.menu>.li1{
+    float: left;
+    width: 100px;
+    height: 40px;
+    line-height: 40px;
+    display: block;
+    /*background-color: pink;*/
+    margin-left: 20px;
+    margin-top: 35px;
+    text-align: center;
+    border-radius: 23px;
+    font-size: 15px;
+}
+.menu>.li1>a{
+    color: black;
+    display: block;
+    height: 100%;
+    width: 100%;
+    /*background-color: #a6c1ee;*/
+    border-radius: 23px;
+}
+.menu>.li1>a:hover{
+    background-color: #02B2B5;
+    color: white;
+}
+
+/*中间*/
+.middle{
+    /*width: 100%;*/
+    height: 1300px;
+    background-color: #abc1ee;
+    min-width: 1500px;
+}
+/*轮播图*/
+.middle>.picture{
+    /*width: 100%;*/
+    height: 600px;
+    background-image: url("pic/p1.jpg");
+    background-size: 100% 600px;
+    min-width: 1200px;
+}
+/*左右箭头*/
+.picture>a{
+    display: block;
+    height: 100px;
+    width: 50px;
+    /*background-color: rgba();*/
+    color: white;
+    font-size: 50px;
+    line-height: 100px;
+    text-align: center;
+}
+.picture>a:hover{
+    color: #fbc2eb;
+}
+
+.picture>.left_a{
+    float: left;
+    margin-top: 250px;
+    margin-left: 50px;
+}
+.picture>.right_a{
+    float: right;
+    margin-top: 250px;
+    margin-right: 50px;
+}
+/*小圆点*/
+.picture>.dots{
+    width: 160px;
+    height: 40px;
+    /*background-color: black;*/
+    float: left;
+    margin-left: 100px;
+    margin-top: 550px;
+}
+.picture>.dots>li{
+    width: 11px;
+    height: 11px;
+    border-radius: 20px;
+    /*inline-block可以设置宽高的特性，同时又具有 inline 元素默认不换行的特性。*/
+    display: inline-block;
+    border: 3px solid rgba(204, 204, 204, 0.5);
+    margin-left: 10px;
+}
+.picture>.dots>li>a{
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+}
+.picture>.dots>li>a:hover{
+    background-color: #a6c1ee;
+}
+
+/*列表案例*/
+.middle>.list{
+    width: 100%;
+    height: 700px;
+    background-color: white;
+    top: 600px;
+}
+
+.middle>.list>p{
+    width: 100%;
+    height: 100px;
+    font-size: 40px;
+    line-height: 100px;
+    text-align: center;
+}
+.middle>.list>ul{
+    width: 1300px;
+    height: 600px;
+    /*background-color: #fbc2eb;*/
+    margin: 0 auto;
+}
+.middle>.list>ul>.li3{
+    height: 230px;
+    width: 285px;
+    float: left;
+    margin-left: 30px;
+    margin-top: 30px;
+    /*border: 2px solid black;*/
+    background-repeat: no-repeat;
+}
+.middle>.list>ul>.li3>span{
+    display: block;
+    margin-top: 210px;
+    text-align: center;
+}
+
+/*尾部*/
+.foot{
+    height: 110px;
+    background-color: black;
+    min-width: 1500px;
+}
+.foot>.foot_p1{
+    height: 110px;
+    width: 500px;
+    /*background-color: #fbc2eb;*/
+    float: left;
+    margin-left: 200px;
+    line-height: 110px;
+    text-align: center;
+    font-size: 40px;
+    color: #02B2B5;
+}
+.foot>.foot_p2{
+    float: left;
+    margin-left: 300px;
+    margin-top: 20px;
+    /*background-color: #fbc2eb;*/
+    line-height: 35px;
+
+}
+.foot>.foot_p2>span{
+    display: block;
+    color: white;
+    font-size: 20px;
+}

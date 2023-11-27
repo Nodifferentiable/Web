@@ -1,21 +1,112 @@
 /*头部*/
 .head{
     height: 110px;
-    background-color: pink;
+    /*background-color: pink;*/
 }
 .head_center{
     width: 1500px;
     height: 100%;
-    background-color: blue;
+    /*background-color: blue;*/
     margin: 0 auto;
 }
 .title{
     height: 110px;
     width: 350px;
-    background-color: green;
+    /*background-color: green;*/
     font-size: 30px;
     text-align: center;
     line-height: 110px;
     color: #02b2b5;
     float: left;
+}
+.menu{
+    width: 700px;
+    height: 110px;
+    /*background-color: #a6c1ee;*/
+    float: left;
+    margin-left: 150px;
+}
+.menu>.li1{
+    float: left;
+    width: 100px;
+    height: 40px;
+    /*background-color: yellow;*/
+    line-height: 40px;
+    margin-top: 35px;
+    margin-left: 20px;
+    font-size: 15px;
+    text-align: center;
+    border-radius: 20px;
+}
+.menu>.li1>a{
+    color: black;
+    display: block;
+    width: 100%;
+    height: 100%;
+    /*background-color: white;*/
+    border-radius: 20px;
+}
+.menu>.li1>a:hover{
+    background-color: #02B2B5;
+    color: white;
+}
+
+/*中间部分*/
+.middle{
+    height: 1300px;
+    background-color: #abc1ee;
+    /*最小宽度*/
+    min-width: 1200px;
+}
+/*轮播图*/
+.middle>.picture{
+    height: 600px;
+    background-image: url("../pic/p1.jpg");
+    background-size: contain;
+}
+.picture>a{
+    display: block;
+    height: 100px;
+    width: 50px;
+    color: white;
+    font-size: 50px;
+    /*background-color: green;*/
+    text-align: center;
+    line-height: 100px;
+}
+.picture>.left_a{
+    float: left;
+    margin-top: 250px;
+    margin-left: 50px;
+}
+.picture>.right_a{
+    float: right;
+    margin-top: 250px;
+    margin-right: 50px;
+}
+/*小圆点*/
+.picture>.dots{
+    width: 160px;
+    height: 40px;
+    /*background-color: green;*/
+    float: left;
+    margin-left: 100px;
+    margin-top: 550px;
+}
+.picture>.dots>li{
+    width: 11px;
+    height: 11px;
+    border-radius: 20px;
+    display: inline-block;
+    border: 3px solid rgba(204, 204, 204, 0.5);
+    margin-left: 10px;
+}
+.picture>.dots>li>a{
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+}
+.picture>.dots>li>a:hover{
+    background-color: #abc1ee;
 }
