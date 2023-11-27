@@ -3,14 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <title>JavaScript</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box {
+            width: 200px;
+            height: 200px;
+            margin-top: 10px;
+            background: rgb(43, 221, 255);
+            position: relative;
+            left: -200px;
+            top: 0;
+        }
+        #box span {
+            width: 20px;
+            background: rgb(255, 119, 157);
+            position: absolute;
+            left: 200px;
+            top: 75px;
+            color: #fff;
+            text-align: center;
+            cursor: pointer;
+            padding: 5px 1px 5px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        #box span:hover {
+            background: rgb(255, 84, 137);
+        }
+    </style>
 </head>
 <body>
-    <button type="button" onmouseover="alert('鼠标已经移动到了该按钮上');">请将鼠标移动至此处</button><br>
-    <a href="#" onmouseover="myEvent()">请将鼠标移动至此处</a>
+    <div id="box">
+        <span id="share">分享</span>
+    </div>
     <script>
-        function myEvent() {
-            alert('鼠标已经移动到了该链接上');
-        }
+        window.onload = function () {
+            //动画
+            var div = document.getElementById("box");
+            var timer = null;
+            div.onmouseover = function () {
+                startMove(0);
+            };
+            div.onmouseout = function () {
+                startMove(-200);
+            };
+            function startMove(targetPosition) {
+                clearInterval(timer);
+                var speed = 0;
+                if (targetPosition < 0) {
+                    speed = -10;
+                } else {
+                    speed = 10;
+                }
+                timer = setInterval(function () {
+                    if (div.offsetLeft == targetPosition) {
+                        clearInterval(timer);
+                    } else {
+                        div.style.left = div.offsetLeft + speed + 'px';
+                    }
+                }, 17);
+            }
+        };
     </script>
 </body>
 </html>
