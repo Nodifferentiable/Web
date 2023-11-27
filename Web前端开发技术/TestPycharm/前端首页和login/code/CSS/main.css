@@ -1,0 +1,21 @@
+/*头部*/
+.head{
+    height: 110px;
+    background-color: pink;
+}
+.head_center{
+    width: 1500px;
+    height: 100%;
+    background-color: blue;
+    margin: 0 auto;
+}
+.title{
+    height: 110px;
+    width: 350px;
+    background-color: green;
+    font-size: 30px;
+    text-align: center;
+    line-height: 110px;
+    color: #02b2b5;
+    float: left;
+}

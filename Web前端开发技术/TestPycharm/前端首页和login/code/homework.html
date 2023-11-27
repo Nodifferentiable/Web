@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .div1{
+            width: 500px;
+            height: 200px;
+            background-color: green;
+            margin: 0 auto;
+            /* 行高 */
+            line-height: 200px;
+            font-size: 27px;
+            text-align: center;
+
+        }
+        span{
+            color: palegoldenrod;
+        }
+    </style>
+</head>
+<body>
+    <div class="div1" id="shownowtime"></div>
+
+    <script>
+
+        let t = setInterval(time, 1000);
+        function time(){
+            dt = new Date();
+            let y = dt.getFullYear();
+            let mt = dt.getMonth() + 1;
+            let day = dt.getDate();
+            let h = dt.getHours();
+            let m = dt.getMinutes();
+            let s = dt.getSeconds();
+            document.getElementById("shownowtime").innerHTML =
+                y + "<span>年</span>" + mt + "<span>月</span>" + day + "<span>日</span>" + h + "<span>时</span>" + m + "<span>分</span>" + s + "<span>秒</span>"
+        }
+    </script>
+
+
+
+</body>
+</html>

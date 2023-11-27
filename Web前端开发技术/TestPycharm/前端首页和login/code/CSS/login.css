@@ -1,0 +1,48 @@
+*{
+    margin:0;
+    padding: 0;
+}
+.cont{
+    height: 1000px;
+    background-image: linear-gradient(to right, #a6c1ee, #fbc2eb);
+}
+.login_wrapper{
+    background-color: wheat;
+    height: 588px;
+    width: 368px;
+    /*  圆角  */
+    border-radius: 15px;
+    /*  居中  */
+    margin: auto;  /* 左右居中 */
+    position: relative;
+    top: 150px;
+}
+.form_title{
+    line-height: 200px;
+    font-size: 38px;
+}
+.form{
+    text-align: center;
+}
+.inp{
+    /* 编程块级标签 */
+    display: block;
+    width: 80%;
+    margin: 20px auto;
+    padding: 10px;
+    border: 0;
+}
+.btn{
+    padding: 10px;
+    width: 80%;
+    background-image: linear-gradient(to right, #a6c1ee, #fbc2eb);
+    border: 0;
+}
+.msg{
+    color: #a6c1ee;
+    line-height: 80px;
+}
+a{
+    color: #a6c1ee;
+    text-decoration-line: none;
+}
