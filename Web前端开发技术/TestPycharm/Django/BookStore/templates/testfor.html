@@ -7,9 +7,16 @@
 <body>
 
 {% for item in dic %}
-<li>{{item}}</li>
+{% if item > 3 %}
+<h1>--->>>>>{{ item }}</h1>
+{% else %}
+<!-- 这里可以添加其他内容 -->
+{% endif %}
 {% endfor %}
 
+{% for item in dic %}
+<li>{{ item }}</li>
+{% endfor %}
 
 </body>
 </html>
