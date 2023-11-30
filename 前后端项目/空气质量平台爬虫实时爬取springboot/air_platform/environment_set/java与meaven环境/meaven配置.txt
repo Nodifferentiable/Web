@@ -1,0 +1,7 @@
+第一步 部署环境变量 
+https://blog.csdn.net/u012660464/article/details/114113349
+第二步 修改mevan地址
+apache-maven-3.6.3\conf\setting.xml
+
+添加 <localRepository>D:\Appaction\maven\apache-maven-3.6.3\maven_repository</localRepository>
+D:\Appaction\maven\apache-maven-3.6.3\maven_repository 为路径

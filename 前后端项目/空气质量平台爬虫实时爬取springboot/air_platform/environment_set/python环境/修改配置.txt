@@ -1,0 +1,13 @@
+第一步 修改数据库的密码等信息
+    conn = pymysql.connect(
+        host='127.0.0.1',  # 主机名
+        port=3306,  # 端口号，MySQL默认为3306
+        user='root',  # 用户名
+        password='password',  # 密码
+        database='ry_air',  # 数据库名称
+    )
+
+第二步
+启动 app.py文件就可以
+
+其中遇到的问题自己debug 大概率是第三方库的版本问题 
