@@ -2,7 +2,7 @@ import csv
 import time
 from DrissionPage import ChromiumPage
 from dao import air_quality_dao
-
+import tqdm
 
 def getProvince(provinceName):
     provinceMap = [{'index': 1, 'province': '北京市'}, {'index': 2, 'province': '天津市'}, {'index': 3, 'province': '上海市'},
@@ -50,7 +50,7 @@ def getData(provinceName):
     city_path = "xpath://div[@class='citychk']/dl[" + str(int(provinceId) - 3) + "]/dd/a"
     city_eles = page.eles(city_path)
 
-    for city_ele in city_eles:
+    for city_ele in tqdm.tqdm(city_eles,desc="collect html about regions"):
         city_name_cn = city_ele.raw_text
         href = city_ele.link
         city_name_en = city_ele.link.replace('http://www.tianqihoubao.com/aqi/', '').split('.')[0]
@@ -58,7 +58,7 @@ def getData(provinceName):
         href_arr.append(href)
         city_name_cn_arr.append(city_name_cn)
     i = 0
-    for link in href_arr:
+    for link in tqdm.tqdm(href_arr,desc="analysis html get data",colour="blue"):
         city = city_name_cn_arr[i]
         # '郑州 '
         city = city.strip().replace(' ', '')
