@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .no-wrap{ /* 更改这里 */
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+<h1>sadasdad</h1>
+
+ {% for pa in pachong %}
+
+    {% for key, value in pa.items %}
+        <h1 class="no-wrap">{{ key }}: {{ value }}</h1> <!-- 更改这里 -->
+    {% endfor %}
+     <p>1111111111111111111111111111111111</p>
+{% endfor %}
+
+</body>
+</html>

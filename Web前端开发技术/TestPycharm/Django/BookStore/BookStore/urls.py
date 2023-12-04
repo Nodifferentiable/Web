@@ -22,8 +22,7 @@ urlpatterns = [
     # 后台管理的路由
     path('admin/', admin.site.urls),
 
-    #include映射子路由
-    path('index/', include("index.urls")),
-    path('index/',include("index.urls")),
+    # include映射子路由
+    path('index/', include("index.urls"),),
 
 ]

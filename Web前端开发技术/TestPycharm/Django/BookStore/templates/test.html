@@ -6,11 +6,17 @@
 </head>
 <body>
 <p style="font-size:50px;color:green">
-    {{name}}<br/>
-    {{age}}<br/>
-    {{gender}} <br/>
+    {{ name }}<br/>
+    {{ age }}<br/>
+    {{ gender }} <br/>
 
+    {# mid #}
+    {% block content %}
+        <p>midddas</p>
+    {% endblock %}
 
+    {% block kk %}
+    {% endblock %}
 
 </p>
 </body>

@@ -37,3 +37,28 @@ class UserInfo(models.Model):
         ('female', '女性'),
     )
     gender = models.CharField(max_length=10,choices = choices,default='male')
+
+from django.db import models
+
+class AirData(models.Model):
+    province = models.CharField(max_length=255, blank=True, null=True)
+    city = models.CharField(max_length=255, blank=True, null=True)
+    point = models.CharField(max_length=255, blank=True, null=True)
+    aqi = models.IntegerField(blank=True, null=True)
+    quality = models.CharField(max_length=255, blank=True, null=True)
+    pm25 = models.FloatField(blank=True, null=True)
+    pm10 = models.FloatField(blank=True, null=True)
+    co = models.FloatField(blank=True, null=True)
+    no2 = models.FloatField(blank=True, null=True)
+    so2 = models.FloatField(blank=True, null=True)
+    o3 = models.FloatField(blank=True, null=True)
+    update_time = models.DateTimeField(blank=True, null=True)
+    update_slot = models.CharField(max_length=255, blank=True, null=True)
+    id = models.IntegerField(primary_key=True)
+    city_flag = models.BooleanField()
+
+    class Meta:
+        managed = False
+        db_table = 'air_data'
+        unique_together = (('province', 'city', 'point', 'update_time'),)
+        verbose_name_plural = '空气质量数据'

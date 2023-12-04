@@ -11,7 +11,9 @@ urlpatterns = [
     # path('admin/', admin.site.urls),
 
     # 对应视图函数
-    path('', views.test_html),
-    path('endfor/', views.teendfor_html)
+    path('test/', views.test_html),
+    path('endfor/', views.teendfor_html),
+    path('test2/', views.ceshi_html),
+    path('blog/', views.pachongtext)
 
 ]
