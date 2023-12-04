@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.air.mapper.AirDataMapper">
+    
+    <resultMap type="AirData" id="AirDataResult">
+        <result property="province"    column="province"    />
+        <result property="city"    column="city"    />
+        <result property="point"    column="point"    />
+        <result property="aqi"    column="aqi"    />
+        <result property="quality"    column="quality"    />
+        <result property="pm25"    column="pm25"    />
+        <result property="pm10"    column="pm10"    />
+        <result property="co"    column="co"    />
+        <result property="no2"    column="no2"    />
+        <result property="so2"    column="so2"    />
+        <result property="o3"    column="o3"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="updateSlot"    column="update_slot"    />
+        <result property="id"    column="id"    />
+    </resultMap>
+
+    <sql id="selectAirDataVo">
+        select province, city, point, aqi, quality, pm25, pm10, co, no2, so2, o3, update_time, update_slot, id from air_data
+    </sql>
+
+    <select id="selectAirDataList" parameterType="AirData" resultMap="AirDataResult">
+        <include refid="selectAirDataVo"/>
+        <where>  
+            <if test="province != null  and province != ''"> and province = #{province}</if>
+            <if test="city != null  and city != ''"> and city = #{city}</if>
+        </where>
+    </select>
+    
+    <select id="selectAirDataById" parameterType="Long" resultMap="AirDataResult">
+        <include refid="selectAirDataVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertAirData" parameterType="AirData" useGeneratedKeys="true" keyProperty="id">
+        insert into air_data
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="province != null">province,</if>
+            <if test="city != null">city,</if>
+            <if test="point != null">point,</if>
+            <if test="aqi != null">aqi,</if>
+            <if test="quality != null">quality,</if>
+            <if test="pm25 != null">pm25,</if>
+            <if test="pm10 != null">pm10,</if>
+            <if test="co != null">co,</if>
+            <if test="no2 != null">no2,</if>
+            <if test="so2 != null">so2,</if>
+            <if test="o3 != null">o3,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="updateSlot != null">update_slot,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="province != null">#{province},</if>
+            <if test="city != null">#{city},</if>
+            <if test="point != null">#{point},</if>
+            <if test="aqi != null">#{aqi},</if>
+            <if test="quality != null">#{quality},</if>
+            <if test="pm25 != null">#{pm25},</if>
+            <if test="pm10 != null">#{pm10},</if>
+            <if test="co != null">#{co},</if>
+            <if test="no2 != null">#{no2},</if>
+            <if test="so2 != null">#{so2},</if>
+            <if test="o3 != null">#{o3},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="updateSlot != null">#{updateSlot},</if>
+         </trim>
+    </insert>
+
+    <update id="updateAirData" parameterType="AirData">
+        update air_data
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="province != null">province = #{province},</if>
+            <if test="city != null">city = #{city},</if>
+            <if test="point != null">point = #{point},</if>
+            <if test="aqi != null">aqi = #{aqi},</if>
+            <if test="quality != null">quality = #{quality},</if>
+            <if test="pm25 != null">pm25 = #{pm25},</if>
+            <if test="pm10 != null">pm10 = #{pm10},</if>
+            <if test="co != null">co = #{co},</if>
+            <if test="no2 != null">no2 = #{no2},</if>
+            <if test="so2 != null">so2 = #{so2},</if>
+            <if test="o3 != null">o3 = #{o3},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="updateSlot != null">update_slot = #{updateSlot},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteAirDataById" parameterType="Long">
+        delete from air_data where id = #{id}
+    </delete>
+
+    <delete id="deleteAirDataByIds" parameterType="String">
+        delete from air_data where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>
