@@ -3,6 +3,10 @@ from django.db import models
 
 # Create your models here.
 
+# 新建出版社表
+class PubName(models.Model):
+    pubname = models.CharField('名称', max_length=255, unique=True)
+
 
 # 创建book表
 class Book(models.Model):
@@ -12,6 +16,7 @@ class Book(models.Model):
     price = models.DecimalField(max_digits=7, decimal_places=2, verbose_name='定价')
     retail_price = models.DecimalField(max_digits=7, decimal_places=2, verbose_name='零售价', default="30")
 
+    pub = models.ForeignKey(to=PubName, on_delete=models.CASCADE, null=True)  # 创建Foreign外键关联pub,以pub_id关联
     # 魔法方法
     def __str__(self):
         return "title:%s pub:%s price:%s" % (self.title, self.public, self.price)
@@ -38,7 +43,11 @@ class UserInfo(models.Model):
     )
     gender = models.CharField(max_length=10,choices = choices,default='male')
 
-from django.db import models
+#新建一对一关用户信息表拓展表,添加完成后执行数据库迁移同步操作
+class ExtendUserinfo(models.Model):
+    user=models.OneToOneField(to=UserInfo,on_delete=models.CASCADE)
+    signature=models.CharField(max_length=255,verbose_name='用户签名',help_text='自建签名')
+    nickname=models.CharField(max_length=255,verbose_name='昵称',help_text='自建昵称')
 
 class AirData(models.Model):
     province = models.CharField(max_length=255, blank=True, null=True)
@@ -62,3 +71,5 @@ class AirData(models.Model):
         db_table = 'air_data'
         unique_together = (('province', 'city', 'point', 'update_time'),)
         verbose_name_plural = '空气质量数据'
+
+
